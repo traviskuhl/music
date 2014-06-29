@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm app.nw
+
+zip -rq app.nw package.json index.html src/* node_modules/*
+
+/Users/kuhl/Applications/node-webkit.app/Contents/MacOS/node-webkit app.nw

@@ -1,0 +1,13 @@
+{
+  "name": "music",
+  "main": "index.html",
+  "window": {
+    "title": "Music",
+    "toolbar": true,    
+    "position": "center"
+  },
+  "dependencies": {
+    "glob": "*",
+    "aws-sdk": "*"
+  }
+}
