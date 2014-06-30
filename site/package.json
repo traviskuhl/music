@@ -1,0 +1,11 @@
+{
+  "name": "music",
+  "dependencies": {
+    "glob": "*",
+    "aws-sdk": "*",
+    "socket.io": "*",
+    "express": "*",
+    "sequelize": "*",
+    "pg": "*"
+  }
+}

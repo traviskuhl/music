@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Upload</title>
+        <link rel="stylesheet" href="../vendor/jquery.dataTables.min.css">
+
+        <script>
+            var jQuery = global.jQuery,
+                $ = global.$,
+                _ = global._,
+                app = global.app;
+        </script>
+        <script src="../vendor/jquery.dataTables.min.js"></script>
+    </head>
+    <body>
+
+        <input id="dir" type="file" nwdirectory>
+
+        <a id="upload">Upload Selected</a>
+
+        <a id="close">close window</a>
+
+        <form>
+            <table id="table" class="display" cellspacing="0" width="100%"></table>
+        </form>
+
+        <script>
+            $(document).ready(function() {
+
+                var body = app.page(document.getElementsByTagName('html')[0]);
+
+                body.find("#close").click(function(e){
+                    window.close();
+                });
+
+                body.find("#upload").click(function(e){
+                    e.preventDefault();
+
+                    // serialzie the form
+                    var ids = body.find("form").serialzie().id;
+
+                    // upload the selected ids
+                    app.upload.upload(ids);
+
+
+                });
+
+
+                // init our datatable
+                var table = body.find("#table").DataTable({
+                    data: app.upload.getQueue(),
+                    columns: [
+                        {data: "should_upload", title: "", defaultContent: ''},
+                        {data: "name", title: "Filename"},
+                        {data: "format", title: "Type"},
+                        {data: "size", title: "size"},
+                        {data: "uploaded", title: "Uploaded"}
+                    ],
+                    lengthChange: false,
+                    paging: false,
+
+                    createdRow: function(row, data, index) {
+                        $('td', row).eq(0).html('<input type="checkbox" name="id" '+(data.upload == true ? 'checked="checked"' : '')+' value="'+data.guid+'">');
+                    }
+                });
+
+                // when they
+                body.find("#dir").change(function(e) {
+
+                    // tell the uploader we want to
+                    // scan this folder
+                    var files = app.upload.scan( $(this).val() );
+
+                    _.each(files, function(file){
+                        app.upload.add(file);
+                        table.row.add(file);
+                    });
+
+                    table.draw();
+
+                });
+
+            });
+        </script>
+
+    </body>
+</html>

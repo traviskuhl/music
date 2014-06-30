@@ -1,13 +1,15 @@
 {
   "name": "music",
-  "main": "index.html",
+  "main": "main.html",
   "window": {
     "title": "Music",
-    "toolbar": true,    
-    "position": "center"
+    "show": true,
+    "position": "mouse"
   },
   "dependencies": {
     "glob": "*",
-    "aws-sdk": "*"
+    "aws-sdk": "*",
+    "request": "*",
+    "node-webkit-window-manager": "*"
   }
 }
