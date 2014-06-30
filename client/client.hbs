@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>var Client = {};</script>
+        {{#each style}}<link rel="stylesheet" href="{{ . }}" type="text/css">{{/each}}
+        {{#each scripts}}<script src="{{ . }}"></script>{{/each}}        
+    </head>
+    <body>
+        <div id="client"></div>
+        <script> new Client.App({{{config}}}); </script>
+    </body>
+</html>

@@ -7,7 +7,7 @@ var WindowManager = require('node-webkit-window-manager').windowManager;
 
 var manager = new WindowManager(gui, {
     login: {
-        page: "src/views/login.html",
+        page: "views/login.html",
         options: {
             frame: true,
             toolbar: true,
@@ -17,12 +17,22 @@ var manager = new WindowManager(gui, {
         }
     },
     upload: {
-        page: "src/views/upload.html",
+        page: "views/upload.html",
         options: {
             frame: false,
             toolbar: false,
             width: 500,
             height: 700,
+            show: true
+        }
+    },
+    client: {
+        page: "client/client.html",
+        options: {
+            frame: false,
+            toolbar: false,
+            width: 1024,
+            height: 800,
             show: true
         }
     }
@@ -42,7 +52,7 @@ var App = function(config) {
     // inial configiration we need to use
     this.config = {
         root: process.cwd(),
-        src: process.cwd()+"/src"
+        src: process.cwd()
     };
 
     // placeholder for a user account
@@ -67,7 +77,7 @@ App.prototype = {
 
         console.log("init");
 
-        this.manager.open("upload", {});
+  //      this.manager.open("upload", {});
 
     },
 

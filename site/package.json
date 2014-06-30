@@ -6,6 +6,8 @@
     "socket.io": "*",
     "express": "*",
     "sequelize": "*",
-    "pg": "*"
+    "pg": "*",
+    "express3-handlebars": "*",
+    "less": "*"
   }
 }

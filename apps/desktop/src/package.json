@@ -1,6 +1,7 @@
 {
-  "name": "music",
-  "main": "main.html",
+  "name": "Music",
+  "version": "0.1",
+  "main": "app://music/main.html",
   "window": {
     "title": "Music",
     "show": true,

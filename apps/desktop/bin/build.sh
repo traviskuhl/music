@@ -1,7 +1,16 @@
 #!/bin/bash
 
+
 rm app.nw
 
-zip -rq app.nw package.json main.html src/* node_modules/*
+node bin/compile.js
+
+cd src/
+
+zip -r app.nw *
+
+mv app.nw ../
+
+cd ../
 
 /Users/kuhl/Applications/node-webkit.app/Contents/MacOS/node-webkit app.nw
