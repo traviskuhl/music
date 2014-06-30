@@ -1,0 +1,10 @@
+{
+  "name": "music",  
+  "dependencies": {  
+    "glob": "*",
+    "less": "*",
+    "handlebars": "*",
+    "ncp": "*",
+    "fs-extra": "*"
+  }
+}
