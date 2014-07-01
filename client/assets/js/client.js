@@ -1,11 +1,14 @@
 var Client = Client || {};
 
 (function(scope){
+    var $ = scope.$;
 
     var App = function(){
-        $("#client").html('poop');
+        this.body = $('body');
+        
+        this.body.addClass('ready');
     };
 
     scope.Client.App = App;
     
-})(this);
+})(window);

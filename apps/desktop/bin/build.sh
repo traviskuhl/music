@@ -7,7 +7,7 @@ node bin/compile.js
 
 cd src/
 
-zip -r app.nw *
+zip -rq  app.nw *
 
 mv app.nw ../
 

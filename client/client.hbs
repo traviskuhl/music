@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
         <script>var Client = {};</script>
         {{#each style}}<link rel="stylesheet" href="{{ . }}" type="text/css">{{/each}}
         {{#each scripts}}<script src="{{ . }}"></script>{{/each}}        
     </head>
     <body>
-        <div id="client"></div>
+        <div id="client">
+
+<nav id="hd" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+</nav>            
+
+<div id="bd">
+    <div class="row">
+
+        <div class="col-lg-3">
+            a
+        </div>
+        <div class="col-lg-7">
+            b
+        </div>
+        <div class="col-lg-2">
+            c
+        </div>
+    </div>
+</div>
+
+
+<nav id="ft" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+
+    <div class="playing pull-left">
+        <div class="controls pull-left">
+            <i class="fa fa-fast-backward"></i>
+            <i class="fa fa-play"></i>
+            <i class="fa fa-fast-forward"></i>
+        </div>
+        <a class="artwork pull-left" href=""><img src="http://placehold.it/100x100"></a>
+        <div class="pull-left">
+            <a class="title" class="">Mess (Live Royal Albert Hall, London, UK, 12/14/99)</a> 
+            <div class="artist">
+                by <a class="">Ben Folds</a>
+            </div>
+
+            <progress max="100" value="10"></progress>
+        </div>
+
+        
+
+    </div>
+
+</nav>
+
+
+        </div>
+        <i class="spin"></i>
         <script> new Client.App({{{config}}}); </script>
+        <script>
+            var spinner = new Spinner({
+                color: "#999",
+                lines: 9, 
+                length: 6,
+                width: 4,
+                radius: 9,
+                corners: 1,
+                rotate: 0,
+                direction: 1,
+                speed: 1,
+                trail: 60
+            }).spin();
+            $("i.spin").append(spinner.el);
+        </script>
     </body>
 </html>

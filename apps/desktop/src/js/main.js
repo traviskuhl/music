@@ -29,8 +29,8 @@ var manager = new WindowManager(gui, {
     client: {
         page: "client/client.html",
         options: {
-            frame: false,
-            toolbar: false,
+            frame: true,
+            toolbar: true,
             width: 1024,
             height: 800,
             show: true

@@ -39,6 +39,16 @@ module.exports = function(app) {
 
     }.bind(this));
 
+    app.get("/client/asset/fonts/:file", function(req, res) {
+
+        res.set('Content-Type', 'font/opentype');
+        res.send(
+            fs.readFileSync(
+                path.normalize(app.clientDir+'/assets/fonts/'+req.params.file)
+            ).toString()
+        );
+    });
+
     app.get("/client/asset/:file", function(req, res) {
         var file = req.params.file;
         var ext = path.extname(file);

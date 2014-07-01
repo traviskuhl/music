@@ -1,0 +1,154 @@
+
+
+.box-shadow(@style, @c:transparent) {
+  box-shadow:         @style @c;
+}
+.round(@radius: 5px) {
+    border-radius: @radius;
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  border-top-right-radius: @topright;
+  border-bottom-right-radius: @bottomright;
+  border-bottom-left-radius: @bottomleft;
+  border-top-left-radius: @topleft;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+.gradient(@start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+}
+.Hgradient(@start, @end) {
+    background: -moz-linear-gradient(left,  @start 0%, @end 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,@start), color-stop(100%,@end));
+    background: -webkit-linear-gradient(left,  @start 0%,@end 100%);
+    background: -o-linear-gradient(left,  @start 0%,@end 100%);
+    background: -ms-linear-gradient(left,  @start 0%,@end 100%);
+    background: linear-gradient(to right,  @start 0%,@end 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@start', endColorstr='@end',GradientType=1 );
+}
+
+
+.opacity(@opacity: 1) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+}
+.clearfix() {
+  zoom: 1;
+  &:after { content: ''; display: table; clear: both; height: 0px; overflow: hidden; font-size:0; }
+}
+.transition(@prop:all, @duration:0.2s, @ease:ease-out, @delay:0) {
+  -webkit-transition: @prop @duration @ease @delay;
+  -moz-transition: @prop @duration @ease @delay;
+  transition: @prop @duration @ease @delay;
+}
+
+.mTransition(@props) {
+  -webkit-transition: @props;
+  -moz-transition: @props;
+  transition: @props;
+}
+
+.animation (...) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  -o-animation: @arguments;
+  animation: @arguments;
+  }
+.scale(@x:1, @y:1) {
+  transform: scale(@x, @y);
+  -ms-transform: scale(@x, @y);
+  -webkit-transform: scale(@x, @y);
+  -o-transform: scale(@x, @y);
+  -moz-transform: scale(@x, @y);
+}
+.blur(...) {
+  filter: blur(@arguments);
+  -webkit-filter: blur(@arguments);
+  -moz-filter: blur(@arguments);
+  -o-filter: blur(@arguments);
+  -ms-filter: blur(@arguments);
+}
+
+
+.keyframes(@name, @from, @to) {
+
+  @-webkit-keyframes @name {
+      from {-webkit-transform: rotate(@from);}
+      to   {-webkit-transform: rotate(@to);}
+  }
+  @-moz-keyframes @name {
+      from {-moz-transform: rotate(@from);}
+      to   {-moz-transform: rotate(@to);}
+  }
+  @-o-keyframes @name {
+      from {-o-transform: rotate(@from);}
+      to   {-o-transform: rotate(@to);}
+  }
+
+}
+
+.transform(@prop, @args) {
+transform: ~"@{prop}(@{args})";
+-webkit-transform: ~"@{prop}(@{args})";
+-moz-transform: ~"@{prop}(@{args})";
+-ms-transform: ~"@{prop}(@{args})";
+-o-transform: ~"@{prop}(@{args})";
+}
+
+
+
+.phtext(@color) {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+      color:  @color;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    @color;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    @color;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    @color;
+  }
+}
+
+.ellipsis() {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.blur(@value) {
+  -webkit-filter: blur(@value);
+  -moz-filter: blur(@value);
+  -o-filter: blur(@value);
+  -ms-filter: blur(@value);
+}
+
+.spirte2x(@image, @width, @height, @x:0, @y:0) {
+  @low: replace(@image, "@2x", "");
+
+  background-image: url(@low);
+  background-position: @x @y;
+  background-repeat: no-repeat;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dppx) {
+    background-image: url(@image);
+    background-position: @x @y;
+    background-size: @width @height;
+  }
+}

@@ -25,6 +25,7 @@ var tpl = hb.compile( fs.readFileSync(clientDir + '/client.hbs').toString() );
 
 fs.writeFileSync(output+"/client.html", tpl({
     scripts: [
+        "app://music/client/vendor.js",
         "app://music/client/client.js"
     ],
     style: [
@@ -41,9 +42,10 @@ fs.writeFileSync(output+"/client.html", tpl({
     })
 }));
 
+ncp(clientDir+"/assets/fonts", output+"/fonts");
 
 glob(clientDir+"/assets/**/*.*", function(err, files) {
-    var js = [], lss = [], css = [];
+    var js = [], jsv = [], lss = [], css = [];
 
     files.forEach(function(file){                
         switch(path.extname(file)) {
@@ -52,7 +54,13 @@ glob(clientDir+"/assets/**/*.*", function(err, files) {
             case '.css':
                 css.push(fs.readFileSync(file)); break;
             case '.js':
-                js.push(fs.readFileSync(file)); break;
+                if (file.indexOf('vendor') !== -1) {
+                    jsv.push(fs.readFileSync(file));
+                }
+                else {
+                    js.push(fs.readFileSync(file));
+                }
+                break;
         };
     });
 
@@ -62,6 +70,7 @@ glob(clientDir+"/assets/**/*.*", function(err, files) {
     });
     
     fs.writeFileSync(output+"/client.js", js.join("\n\n"));
+    fs.writeFileSync(output+"/vendor.js", jsv.join("\n\n"));
     
 });
 
