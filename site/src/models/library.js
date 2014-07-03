@@ -3,7 +3,7 @@
 module.exports = function(app) {
     var Sq = app.Sequelize;
 
-    app.db.define("media", {
+    app.db.define("library", {
         account: Sq.INTEGER,
 
         guid: Sq.UUID,
@@ -22,6 +22,8 @@ module.exports = function(app) {
         bucket: Sq.STRING,
         key: Sq.STRING
 
+    }, {
+        tableName: "library"
     });
 
 };

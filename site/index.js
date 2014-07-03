@@ -4,13 +4,15 @@ var io = require('socket.io')(server);
 
 // depend
 var glob = require("glob")
-    hbs  = require('express3-handlebars')   
+    hbs  = require('express3-handlebars').create({
+        extname:'hbs'
+    })   
 ;
 
+app.hbs = hbs;
+
 // handlebars
-app.engine('hbs', hbs({
-    extname:'hbs'
-}));
+app.engine('hbs', hbs.engine);
 
 app.clientDir = __dirname + '/../client/';
 

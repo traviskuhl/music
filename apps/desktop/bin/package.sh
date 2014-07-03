@@ -2,7 +2,7 @@
 #
 
 VERSION="0.1"
-ECHO="VERSION"
+ECHO="VERSION "
 
 echo $ECHO$VERSION
 

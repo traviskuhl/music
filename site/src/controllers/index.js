@@ -13,6 +13,13 @@ module.exports = function(app) {
 
     app.get("/", function(req, res){
         var file = path.normalize(app.clientDir + 'client.hbs');
+        var templates = {};
+        var dir = path.normalize(app.clientDir+'/views/');
+
+        glob.sync(dir+'**/*.html').forEach(function(file){
+            var f = file.replace(dir, '').replace('.html', '');
+            templates[f] = fs.readFileSync(file).toString();
+        });
 
         res.set('Content-Type', 'text/html');
         res.render(file, {
@@ -23,7 +30,7 @@ module.exports = function(app) {
             style: [
                 "/client/asset/vendor.css",
                 "/client/asset/client.css"
-            ],
+            ],            
             config: JSON.stringify({
                 server: {
                     host: "localhost",
@@ -32,7 +39,8 @@ module.exports = function(app) {
                 loader: {
                     root: "/client/loader",
                     version: (new Date()).getTime()
-                }
+                },
+                templates: templates,
             })
         });
         
