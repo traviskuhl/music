@@ -1,0 +1,14 @@
+{
+  "name": "musicsync",
+  "dependencies": {
+    "glob": "*",
+    "aws-sdk": "*",
+    "fs-extra": "*",
+    "commander": "*",
+    "prompt": "*",
+    "underscore": "*",
+    "musicmetadata": "*",
+    "ffmpeg": "*",
+    "tmp": "*"
+  }
+}

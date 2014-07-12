@@ -3,3 +3,7 @@ app.nw
 
 apps/desktop/src/client
 apps/desktop/builds
+
+lib/sync/tests/*.m4a
+
+config.json
