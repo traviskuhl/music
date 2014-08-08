@@ -1,0 +1,89 @@
+#!/usr/bin/env node
+
+var prog = require('commander'),
+    fs = require('fs'),
+    prompt = require('prompt'),
+    sync = require(__dirname + "/../lib/sync.js")
+;
+
+/**
+ * helpers
+ */
+var parseConfig = function(file) {
+    return JSON.parse(fs.readFileSync(fs.realpathSync(file)));
+}
+
+/**
+ * global
+ */
+prog
+    .version('0.0.1')
+    .option('-c, --config <path>', 'Config File', 'config.json')
+    .option('-s, --server <host>', 'Server Hostname [localhost:3000]', 'localhost:3000')
+;
+
+/**
+ * Setup
+ */
+prog
+    .command('setup')
+    .description("Create config file")
+    .action(function(){
+        var config = {
+            aws: {
+                key: null,
+                secret: null,
+                bucket: null,
+                prefix: null
+            },
+            server: {
+                host: null
+            }
+        };
+
+        var file = this.config || __dirname+"/../config.json";
+
+        prompt.message = "";
+        prompt.delimiter = "";
+        prompt.start();
+
+
+        prompt.get(["AWS Key", "AWS Secret", "S3 Bucket", "Key Prefix", "Server"], function(er, r){
+            config.aws.secret = r['AWS Secret'];
+            config.aws.key = r['AWS Key'];
+            config.aws.bucket = r['S3 Bucket'];
+            config.aws.prefix = r['Key Prefix'];
+
+            config.server.host = r['Server'];
+
+            fs.writeFileSync(file, JSON.stringify(config));
+
+        });
+
+
+    });
+
+/**
+ * sync a folder
+ */
+prog
+    .command('sync [folder]')
+    .description("Sync a folder to the server")
+    .action(function(){
+        var folder = this['args'][0] || ".";
+        var config = parseConfig(this.config || __dirname+"/../config.json");
+
+        fs.realpath(folder, function(err, path){
+            if (err) {
+                console.log("Folder '"+folder+"' does not exists");
+                return;
+            }
+
+            // process a path for a config
+            var proc = sync.process(config, path);
+
+        });
+    });
+
+
+prog.parse(process.argv);
