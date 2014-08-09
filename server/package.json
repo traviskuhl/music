@@ -1,0 +1,11 @@
+{
+  "name": "musicserver",
+  "dependencies": {
+    "glob": "*",
+    "aws-sdk": "*",
+    "socket.io": "*",
+    "express": "*",
+    "underscore": "*",
+    "less": "*"
+  }
+}

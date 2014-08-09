@@ -1,0 +1,55 @@
+
+
+.player {
+    position: relative;
+    width: 100%;
+    height: 50px;
+
+    .control {
+        cursor: pointer;
+    }
+
+    .control-play,
+    .control-pause {
+        display: none;
+    }
+
+    &[data-state="playing"] {
+        .control-pause {
+            display: inline-block;
+        }
+    }
+    &[data-state="paused"] {
+        .control-play {
+            display: inline-block;
+        }
+    }
+
+    .playhead {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #eee;
+
+        span {
+            .transition(width,2s);
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .progress {
+            background: #e0e0e0;
+        }
+
+        .time {
+            background: #999;
+        }
+
+    }
+
+}

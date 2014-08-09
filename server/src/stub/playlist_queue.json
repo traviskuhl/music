@@ -1,0 +1,56 @@
+{
+    "id": "queue",
+    "meta": {
+        "name": "Queue"
+    },
+    "tracks": [
+        {
+            "id": "track_id",
+            "title": "Mess (Live Royal Albert Hall, London, UK, 12/14/99)",
+            "file": "https://dl.dropboxusercontent.com/u/1184412/music/mess.m4a",
+            "artist": {
+                "id": "artist_id",
+                "name": "Ben Folds Five"
+            },
+            "album": {
+                "id": "album_id",
+                "name": "The Best Imitation of Myself: A Retrospective"
+            },
+            "media": {
+
+            }
+        },
+        {
+            "id": "track_id",
+            "title": "Mess (Live Royal Albert Hall, London, UK, 12/14/99)",
+            "file": "https://dl.dropboxusercontent.com/u/1184412/music/mess.m4a",
+            "artist": {
+                "id": "artist_id",
+                "name": "Ben Folds Five"
+            },
+            "album": {
+                "id": "album_id",
+                "name": "The Best Imitation of Myself: A Retrospective"
+            },
+            "media": {
+
+            }
+        },
+        {
+            "id": "track_id",
+            "title": "Mess (Live Royal Albert Hall, London, UK, 12/14/99)",
+            "file": "https://dl.dropboxusercontent.com/u/1184412/music/mess.m4a",
+            "artist": {
+                "id": "artist_id",
+                "name": "Ben Folds Five"
+            },
+            "album": {
+                "id": "album_id",
+                "name": "The Best Imitation of Myself: A Retrospective"
+            },
+            "media": {
+
+            }
+        }
+    ]
+}

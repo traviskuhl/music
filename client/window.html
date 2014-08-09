@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <title>Music</title>
+
+
+        <link rel="stylesheet" href="<%= root %>/vendor/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="<%= root %>/vendor/font-awesome.min.css" type="text/css">
+
+        <link rel="stylesheet" href="<%= root %>/less/app.less" type="text/css">
+
+        <script>
+            var Music = {
+
+                // class
+                Controller: {},
+                Plugin: {},
+                Model: {},
+                Collection: {},
+
+                // instance methods
+                config: <%= config %>,
+                app: null,
+                routes: {}
+
+            };
+        </script>
+
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script> Music.templates = <%= templates %>; </script>
+        <script src="<%= root %>/vendor/jquery-1.11.1.min.js"></script>
+        <script src="<%= root %>/vendor/underscore-min.js"></script>
+        <script src="<%= root %>/vendor/backbone-min.js"></script>
+        <script src="<%= root %>/vendor/bootstrap.min.js"></script>
+
+        <script src="<%= root %>/music.js"></script>
+        <script>
+            $(document).ready(function(){
+                Music.app = new Music.MusicApp({
+                    el: $("#app"),
+                    config: Music.config,
+                    templates: Music.templates,
+                    routes: Music.routes
+                });
+                Music.app.render();
+                Backbone.history.start({pushState: true});
+            });
+        </script>
+
+    </body>
+</html>
