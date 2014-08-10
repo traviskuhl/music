@@ -7,7 +7,7 @@
     root.Music.Plugin = root.Music.Plugin || {};
 
     /**
-     * Player Plugin
+     * Player
      */
     root.Music.Plugin.Player = root.Music.Base.View.extend({
         STATE_PLAYING: 'playing',
@@ -23,6 +23,11 @@
                 e.preventDefault();
                 this.audio.pause();
             }
+        },
+
+        props: {
+            playing: null,
+            next: null
         },
 
         state: null,
@@ -53,7 +58,6 @@
 
             // set our template and render
             this.template = this.getTemplate("plugin/player");
-            this.render();
 
             // inialize our audio handler
             this.audio = new root.Music.Audio($("audio"));
@@ -66,14 +70,10 @@
             this.queue
                 .fetch();
 
-
         },
 
         render: function() {
-            this.$el.html(this.template({
-
-
-            }));
+            this.$el.html(this.template(this.props));
             return this;
         },
 
@@ -91,15 +91,17 @@
         },
 
         queueChange: function(e) {
-
-            this.play(this.queue.tracks().at(0));
-
+            this.play();
         },
 
-        play: function(track) {
+        play: function() {
+            this.props.playing = this.queue.tracks().at(0);
+            this.props.next = this.queue.tracks().at(1);
+
+            this.render();
 
             this.audio
-                .src(track.get("file"))
+                .src(this.props.playing.get("file"))
                 .play();
         },
 

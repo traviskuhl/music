@@ -1,8 +1,7 @@
 {
     "id": "queue",
-    "meta": {
-        "name": "Queue"
-    },
+    "name": "Queue",
+    "numberOfTracks": 10,
     "tracks": [
         {
             "id": "track_id",

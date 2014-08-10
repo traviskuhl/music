@@ -1,0 +1,10 @@
+
+
+<% if (!_.isEmpty(playlists)) { %>
+    <strong>Playlists</strong>
+    <ul>
+        <% playlists.each(function(item) { %>
+            <li data-id="<%= item.get("id") %>"><a href=""><%= item.get("name") %></a></li>
+        <% }) %>
+    </ul>
+<% } %>

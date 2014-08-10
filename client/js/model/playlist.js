@@ -5,13 +5,14 @@
     root.Music = root.Music || {};
     root.Music.Model = root.Music.Model || {};
 
-    root.Music.Model.Playlist = root.Music.Base.Model.extend({
+    var Model = root.Music.Base.Model.extend({
         _tracks: null,
 
         defaults: {
-            "id": null,
-            "meta": {},
-            "tracks": []
+            id: null,
+            name: null,
+            numberOfTracks: 0,
+            tracks: []
         },
 
         url: function(method) {
@@ -27,5 +28,16 @@
 
     });
 
+    var Collection = root.Music.Base.Collection.extend({
+        model: Model,
+
+        url: function(){
+            return "playlist.json";
+        }
+
+    });
+
+    root.Music.Model.Playlist = Model;
+    root.Music.Collection.Playlist = Collection;
 
 })(this);

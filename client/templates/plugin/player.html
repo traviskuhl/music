@@ -1,12 +1,18 @@
-<i data-player="backward" class="fa fa-backward control"></i>
-<i data-player="play" class="fa fa-play control control-play"></i>
-<i data-player="pause" class="fa fa-pause control control-pause"></i>
-<i data-player="forward" class="fa fa-forward control"></i>
-
-<div class="playing">
-
-
+<div class="controls pull-left">
+    <i data-player="backward" class="fa fa-backward control"></i>
+    <i data-player="play" class="fa fa-play control control-play"></i>
+    <i data-player="pause" class="fa fa-pause control control-pause"></i>
+    <i data-player="forward" class="fa fa-forward control"></i>
 </div>
+
+<% if (playing) { %>
+    <div class="playing">
+        <a href=""><img src="http://placehold.it/50x50" width="50">
+        <a href=""><%= playing.get("title") %></a>
+        by <a href=""><%= playing.get("artist").name %></a>
+    </div>
+<% } %>
+
 <div class="next">
 
 </div>

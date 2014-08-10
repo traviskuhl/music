@@ -17,13 +17,19 @@
 
     Base.View = Backbone.View.extend(_.extend(Base, {
 
-
         props: {
 
         },
 
         getTemplate: function(name) {
             return eval('('+this.app().templates[name]+')');
+        },
+
+        render: function(props) {
+            this.$el.html(this.template(
+                _.extend(this.props, props)
+            ));
+            return this;
         }
 
     }));

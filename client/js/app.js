@@ -30,10 +30,15 @@
         render: function() {
             this.$el.html(this.template(this.props));
 
-            this.player = new root.Music.Plugin.Player({
+            this.player = (new root.Music.Plugin.Player({
                 app: this,
                 el: this.$("#hd .player"),
                 queue: new root.Music.Model.Playlist({id: 'queue'})
+            })).render();
+
+            new root.Music.Plugin.Menu({
+                app: this,
+                el: this.$("#menu")
             });
 
         }
